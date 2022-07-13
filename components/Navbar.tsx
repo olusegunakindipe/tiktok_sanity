@@ -23,6 +23,7 @@ const Navbar = () => {
             className="cursor-pointer"
             alt="tiktik"
             layout="responsive"
+            priority
           />
         </div>
       </Link>
@@ -39,7 +40,7 @@ const Navbar = () => {
                 <span className="hidden md:block">Upload</span>
               </button>
             </Link>
-            {userProfile && (
+            {userProfile?.image && (
               <Link href="/">
                 <>
                   <Image

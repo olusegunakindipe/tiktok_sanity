@@ -9,7 +9,7 @@ export interface IProps {
   image: string;
 }
 const authStore = (set: any) => ({
-  userProfile: null,
+  userProfile: {} as IProps,
   addUser: (user: IProps) => set({ userProfile: user }),
   removeUser: () => set({ userProfile: null }),
 });
