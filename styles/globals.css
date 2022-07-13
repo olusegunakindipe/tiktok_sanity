@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,344 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  gap: 24px;
+}
+
+.container .sidebar {
+  height: 92vh;
+  overflow: hidden;
+}
+
+.container .pages {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10;
+  /* overflow: auto; */
+  height: 88vh;
+  flex: 1;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  padding: 8px 16px;
+}
+
+.navbar .image {
+  width: 100px;
+}
+.post-container {
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: bottom;
+  background-color: white;
+  margin-top: -40px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+  height: 490px;
+  overflow: hidden;
+  width: 700px;
+}
+
+.video .play {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+
+.volumeUp {
+  position: absolute;
+  right: 0px;
+  padding: 10px;
+  /* bottom: -40px; */
+}
+
+.cancel {
+  font-size: max(30px);
+  margin-top: 10px;
+}
+/* .cancle-box {
+  margin-top: 20px;
+} */
+.video {
+  position: relative;
+  max-width: 700px;
+  /* top: 50px; */
+  margin: auto;
+}
+
+.video .video-player {
+  width: 768px;
+}
+.like-comment {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 25px;
+}
+.comme {
+  background-color: #fbfbfb;
+  position: relative;
+  min-height: 350px;
+  margin-top: 45px;
+}
+
+.box {
+  position: absolute;
+  bottom: 0px;
+
+  display: flex;
+  justify-content: center;
+  /* background-color: gray; */
+  align-items: center;
+  margin: 20px auto;
+
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  /* background-color: gray; */
+  align-items: center;
+  /* margin: 20px auto; */
+  width: 100%;
+  padding-right: 49px;
+}
+.big-input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  outline: none;
+  /* background-color: #fbfbfb; */
+}
+
+.small-input {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  width: 170px;
+  outline: none;
+  font-size: 10px;
+  border: 1px solid #ebe8e8;
+  background-color: rgb(248, 243, 243);
+}
+.inputField {
+  flex: 2;
+  width: 300px;
+}
+.search-field {
+  position: relative;
+}
+
+.search-button {
+  position: absolute;
+  top: 8px;
+  right: 7px;
+}
+
+.comment-button {
+  /* margin-left: 10px; */
+  flex: 1;
+}
+
+.like-comment .comments {
+  margin-top: 15px;
+  height: 100%;
+}
+
+.likes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.likes .image {
+  border-radius: 50%;
+}
+.username {
+}
+.username .first {
+  font-weight: 600;
+}
+.username .second {
+  font-size: 12px;
+  margin-top: 8px;
+}
+.verified {
+  display: inline-flex;
+  color: #405de6;
+}
+.caption {
+  margin-top: 10px;
+}
+.all-likes {
+  margin: 50px 30px;
+}
+
+.love {
+  margin-top: 40px;
+  background-color: rgb(236, 231, 231);
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+}
+.button-likes {
+  text-align: center;
+  display: inline-block;
+}
+.post-likes {
+  font-size: 12px;
+}
+
+.commentonly:first-child {
+  margin-top: 0px;
+}
+.commentonly {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.commentonly:hover {
+  background-color: rgb(216, 208, 208);
+}
+
+/* .commentonly:nth-last-child(2) {
+  margin-bottom: 150px;
+} */
+
+.commentonly:nth-last-child(1) {
+  margin-bottom: 150px;
+}
+
+.no-videos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.pause-fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width) {
+}
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    gap: 80px;
+  }
+  .navbar .image {
+    width: 130px;
+  }
+
+  .small-input {
+    width: 300px;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .search-button {
+    top: 15px;
+  }
+
+  .volumeUp {
+    padding: 5px;
+    bottom: 8px;
+    /* right: -48px; */
+    position: absolute;
+    /* overflow: auto; */
+  }
+
+  .post-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    margin-top: -40px;
+  }
+
+  .content {
+    height: 1007px;
+    width: 70vw;
+    flex: 2;
+  }
+
+  .like-comment {
+    flex: 1;
+  }
+  .video {
+    margin: 30px 0px;
+    max-width: none;
+  }
+  .video .video-player {
+    width: 100%;
+    height: 850px;
+  }
+  .all-likes {
+    margin: 20px 30px 10px 0px;
+    width: 100%;
+    padding: 10px;
+    /* max-height: 16%; */
+    /* overflow: auto; */
+  }
+  .all-likes .comments {
+    /* overflow: auto; */
+    max-height: 500px;
+  }
+  .comme {
+    height: 100%;
+  }
+  .first-comment {
+    overflow: auto;
+    max-height: 645px;
+  }
+  .box {
+    bottom: 0px;
+    margin: 0px;
+    display: flex;
+    /* flex-direction: column; */
+    gap: 10px;
+    position: absolute;
+    /* left: 20%; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+  }
+  .comment-button {
+    width: 100%;
+  }
+  .commentonly {
+    /* justify-content: space-around; */
+    padding: 10px;
+  }
+  .commentonly:nth-last-child(2) {
+    margin-bottom: 0px;
+  }
+
+  .commentonly:last-child {
+    margin-bottom: 20px;
+  }
 }
