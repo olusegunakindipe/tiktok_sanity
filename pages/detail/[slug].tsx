@@ -1,27 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import axios from 'axios';
 import { client } from '../../utils/client';
 import { CommentProps, Video } from '../../utils/types';
-import VideoCard from '../../components/VideoCard';
-import Image from 'next/image';
 import Likes from '../../components/Likes';
 import { GiRoyalLove } from 'react-icons/gi';
 import useAuthStore from '../../store/auth';
 import { BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs';
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { fromString } from 'uuidv4';
 import InputField from '../../components/InputField';
 import Button from '../../components/Button';
 import { AiFillDelete } from 'react-icons/ai';
 interface IProps {
   post: Video;
-}
-
-interface CProps {
-  comments: CommentProps;
 }
 
 const Detail = ({ post }: IProps) => {
@@ -38,7 +30,7 @@ const Detail = ({ post }: IProps) => {
     if (post.likes && post.likes.length > 0) {
       setLoading(true);
       post.likes.find((item) => {
-        if (item?._ref === `${userProfile._id}`) {
+        if (item._ref === `${userProfile._id}`) {
           client
             .patch(post._id)
             .unset(['likes[0]', 'likes[_key=="{item._key}"]'])
@@ -99,7 +91,7 @@ const Detail = ({ post }: IProps) => {
     router.push('/');
   };
 
-  const sortData = (a, b) => {
+  const sortData = (a: any, b: any) => {
     const first = Date.parse(a.postedBy._createdAt);
     const second = Date.parse(b.postedBy._createdAt);
 
@@ -131,7 +123,7 @@ const Detail = ({ post }: IProps) => {
     router.replace(router.asPath);
   };
 
-  const handleDelete = async (data) => {
+  const handleDelete = async (data: CommentProps) => {
     if (data) {
       client
         .patch(post._id)
@@ -259,9 +251,10 @@ const Detail = ({ post }: IProps) => {
 export default Detail;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const {
-    params: { slug },
-  } = context;
+  const slug = context.params?.slug;
+  // const {
+  //   params: { slug }
+  // } = context;
   const query = `*[_type == "post" && slug.current == '${slug}'] | order(comments)[0]{
     ...,
     postedBy->,
@@ -286,7 +279,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const query = `*[_type == "post"]`;
 
   const response = await client.fetch(query);
-  const paths = response.map((post) => {
+  const paths = response.map((post: Video) => {
     return {
       params: {
         slug: post.slug.current,
