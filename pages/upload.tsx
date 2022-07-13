@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FaCloudUploadAlt } from 'react-icons/fa';
-import { useForm } from 'react-hook-form';
-import { MdDelete } from 'react-icons/md';
 import axios from 'axios';
 import { SanityAssetDocument } from '@sanity/client';
 
@@ -20,8 +18,9 @@ const Upload = () => {
   const [savingPost, setSavingPost] = useState(false);
   const { userProfile }: { userProfile: any } = useAuthStore();
   const router = useRouter();
-  const uploadVideo = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files[0];
+  const uploadVideo = async (event: React.ChangeEvent) => {
+    const target = event.target as HTMLInputElement;
+    const selectedFile = (target.files as FileList)[0];
 
     const fileTypes = ['video/mp4', 'video/webm', 'video/ogg'];
 
