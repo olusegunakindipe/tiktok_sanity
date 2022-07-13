@@ -39,7 +39,7 @@ const Navbar = () => {
                 <span className="hidden md:block">Upload</span>
               </button>
             </Link>
-            {userProfile?.image && (
+            {userProfile && (
               <Link href="/">
                 <>
                   <Image
