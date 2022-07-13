@@ -20,5 +20,11 @@ export const createOrGetUser = async (response: any, addUser: any) => {
 
   addUser(user);
 
-  await axios.post(`http://localhost:3000/api/auth`, user);
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_SANITY_TOKEN}`,
+  };
+  await axios.post(`http://localhost:3000/api/auth`, user, {
+    headers,
+  });
 };

@@ -66,7 +66,14 @@ const Upload = () => {
         topic: category,
       };
 
-      await axios.post('http://localhost:3000/api/post', document);
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SANITY_TOKEN}`,
+      };
+
+      await axios.post('http://localhost:3000/api/post', document, {
+        headers,
+      });
 
       router.push('/');
     }
